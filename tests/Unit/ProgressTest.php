@@ -33,6 +33,38 @@ class ProgressTest extends TestCase
      * @test
      * @throws Exception
      */
+    public function it_returns_a_progress_class_when_instantiated_with_no_ratings()
+    {
+        $rater = new Rater(1);
+
+        $ratings = new RatingCollection;
+
+        $progress = new Progress($rater, $ratings);
+
+        $this->assertInstanceOf(Progress::class, $progress);
+    }
+
+    /**
+     * @test
+     * @throws Exception
+     */
+    public function it_returns_a_progress_class_when_instantiated_with_one_rating()
+    {
+        $rater = new Rater(1);
+
+        $ratings = new RatingCollection;
+
+        $ratings->add(score: 1.2);
+
+        $progress = new Progress($rater, $ratings);
+
+        $this->assertInstanceOf(Progress::class, $progress);
+    }
+
+    /**
+     * @test
+     * @throws Exception
+     */
     public function it_returns_a_progress_struct_when_the_data_method_is_called()
     {
         $rater = new Rater(1);

@@ -29,20 +29,22 @@ class Progress
         $this->progress->ratingsCount = $ratings->count();
 
         $this->progress->firstRating = $this->progress->ratings->first();
-
-        if (is_null($this->progress->firstRating)) $this->progress->firstRating = null;
-
-        $msg = 'The first rating score is invalid. It must be between 0.0 and 40.0.';
-
-        if ($this->progress->firstRating->data()->score < 0 || $this->progress->firstRating->data()->score > 40) throw new Exception($msg);
-
         $this->progress->lastRating = $this->progress->ratings->last();
 
-        if (is_null($this->progress->lastRating)) $this->progress->lastRating = null;
+        if (is_null($this->progress->firstRating) && is_null($this->progress->lastRating)) {
+            $this->progress->ratingChange = round(0.0, 1);
+            $this->progress->ratingChangeAsString = number_format($this->progress->ratingChange, 1);
+        }
 
-        $msg = 'The last rating score is invalid. It must be between 0.0 and 40.0.';
+        if (! is_null($this->progress->firstRating) && ! is_null($this->progress->lastRating)) {
+            $msg = 'The first rating score is invalid. It must be between 0.0 and 40.0.';
 
-        if ($this->progress->lastRating->data()->score < 0 || $this->progress->lastRating->data()->score > 40) throw new Exception($msg);
+            if ($this->progress->firstRating->data()->score < 0 || $this->progress->firstRating->data()->score > 40) throw new Exception($msg);
+
+            $msg = 'The last rating score is invalid. It must be between 0.0 and 40.0.';
+
+            if ($this->progress->lastRating->data()->score < 0 || $this->progress->lastRating->data()->score > 40) throw new Exception($msg);
+        }
 
         // INFO: Only update the rating change value if there is one or more ratings.
         if ($this->progress->ratings->count() > 0) {
