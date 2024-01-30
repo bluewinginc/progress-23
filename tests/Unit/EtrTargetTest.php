@@ -35,7 +35,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(13.94, round($data->expectedChange, 2));
+        $this->assertEquals(12.98, round($data->expectedChange, 2));
     }
 
     /**
@@ -59,14 +59,14 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(13.31, round($data->expectedChange, 2));
+        $this->assertEquals(11.94, round($data->expectedChange, 2));
     }
 
     /**
      * @test
      * @throws Exception
      */
-    public function will_return_false_when_checking_if_etr_target_was_met_when_using_st_youth_algorithm()
+    public function will_return_true_when_checking_if_etr_target_was_met_when_using_st_youth_algorithm()
     {
         $rater = new Rater($this::ADOLESCENT);
         $ratings = new RatingCollection;
@@ -85,14 +85,14 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertFalse($data->met);
+        $this->assertTrue($data->met);
     }
 
     /**
      * @test
      * @throws Exception
      */
-    public function will_return_false_when_checking_if_etr_target_was_met_when_using_st_adult_algorithm()
+    public function will_return_true_when_checking_if_etr_target_was_met_when_using_st_adult_algorithm()
     {
         $rater = new Rater($this::ADULT);
         $ratings = new RatingCollection;
@@ -137,7 +137,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(99.7, $data->metPercent);
+        $this->assertEquals(100.0, $data->metPercent);
 
         $ratings = new RatingCollection;
 
@@ -155,7 +155,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(63.84, round($data->metPercent, 2));
+        $this->assertEquals(68.58, round($data->metPercent, 2));
     }
 
     /**
@@ -199,7 +199,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(66.86, round($data->metPercent, 2));
+        $this->assertEquals(74.57, round($data->metPercent, 2));
     }
 
     /**
@@ -247,7 +247,7 @@ class EtrTargetTest extends TestCase
 
         $met = $data->metPercent67;
 
-        $this->assertFalse($met);
+        $this->assertTrue($met);
     }
 
     /**
@@ -321,7 +321,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(26.04, round($data->value, 2));
+        $this->assertEquals(25.08, round($data->value, 2));
     }
 
     /**
@@ -347,7 +347,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(25.41, round($data->value, 2));
+        $this->assertEquals(24.04, round($data->value, 2));
     }
 
     /**
@@ -378,7 +378,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(26.04, round($data->value, 2));
+        $this->assertEquals(25.08, round($data->value, 2));
     }
 
     /**
@@ -409,7 +409,7 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(25.41, round($data->value, 2));
+        $this->assertEquals(24.04, round($data->value, 2));
     }
 
     /**
@@ -470,9 +470,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.69, round($data->expectedChange, 2));
-        $this->assertEquals(28.89, round($data->value, 2));
-        $this->assertEquals(11.35, round($data->metPercent, 2));
+        $this->assertEquals(8.84, round($data->expectedChange, 2));
+        $this->assertEquals(28.04, round($data->value, 2));
+        $this->assertEquals(12.44, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -494,9 +494,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.05, round($data->expectedChange, 2));
-        $this->assertEquals(28.25, round($data->value, 2));
-        $this->assertEquals(12.15, round($data->metPercent, 2));
+        $this->assertEquals(8.03, round($data->expectedChange, 2));
+        $this->assertEquals(27.23, round($data->value, 2));
+        $this->assertEquals(13.70, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -518,9 +518,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.15, round($data->expectedChange, 2));
-        $this->assertEquals(29.25, round($data->value, 2));
-        $this->assertEquals(22.96, round($data->metPercent, 2));
+        $this->assertEquals(8.32, round($data->expectedChange, 2));
+        $this->assertEquals(28.42, round($data->value, 2));
+        $this->assertEquals(25.25, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -542,9 +542,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(8.51, round($data->expectedChange, 2));
-        $this->assertEquals(28.61, round($data->value, 2));
-        $this->assertEquals(24.67, round($data->metPercent, 2));
+        $this->assertEquals(7.54, round($data->expectedChange, 2));
+        $this->assertEquals(27.64, round($data->value, 2));
+        $this->assertEquals(27.87, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -566,8 +566,8 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.15, round($data->expectedChange, 2));
-        $this->assertEquals(29.25, round($data->value, 2));
+        $this->assertEquals(8.32, round($data->expectedChange, 2));
+        $this->assertEquals(28.42, round($data->value, 2));
         $this->assertEquals(100.00, round($data->metPercent, 2));
         $this->assertTrue($data->met);
         $this->assertTrue($data->metPercent50);
@@ -590,8 +590,8 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(8.51, round($data->expectedChange, 2));
-        $this->assertEquals(28.61, round($data->value, 2));
+        $this->assertEquals(7.54, round($data->expectedChange, 2));
+        $this->assertEquals(27.64, round($data->value, 2));
         $this->assertEquals(100.00, round($data->metPercent, 2));
         $this->assertTrue($data->met);
         $this->assertTrue($data->metPercent50);
@@ -614,9 +614,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.69, round($data->expectedChange, 2));
-        $this->assertEquals(28.89, round($data->value, 2));
-        $this->assertEquals(52.65, round($data->metPercent, 2));
+        $this->assertEquals(8.84, round($data->expectedChange, 2));
+        $this->assertEquals(28.04, round($data->value, 2));
+        $this->assertEquals(57.68, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertTrue($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -638,9 +638,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.05, round($data->expectedChange, 2));
-        $this->assertEquals(28.25, round($data->value, 2));
-        $this->assertEquals(56.35, round($data->metPercent, 2));
+        $this->assertEquals(8.03, round($data->expectedChange, 2));
+        $this->assertEquals(27.23, round($data->value, 2));
+        $this->assertEquals(63.51, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertTrue($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -662,9 +662,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.69, round($data->expectedChange, 2));
-        $this->assertEquals(28.89, round($data->value, 2));
-        $this->assertEquals(41.29, round($data->metPercent, 2));
+        $this->assertEquals(8.84, round($data->expectedChange, 2));
+        $this->assertEquals(28.04, round($data->value, 2));
+        $this->assertEquals(45.24, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -686,9 +686,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.05, round($data->expectedChange, 2));
-        $this->assertEquals(28.25, round($data->value, 2));
-        $this->assertEquals(44.19, round($data->metPercent, 2));
+        $this->assertEquals(8.03, round($data->expectedChange, 2));
+        $this->assertEquals(27.23, round($data->value, 2));
+        $this->assertEquals(49.81, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -710,9 +710,9 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.69, round($data->expectedChange, 2));
-        $this->assertEquals(28.89, round($data->value, 2));
-        $this->assertEquals(41.29, round($data->metPercent, 2));
+        $this->assertEquals(8.84, round($data->expectedChange, 2));
+        $this->assertEquals(28.04, round($data->value, 2));
+        $this->assertEquals(45.24, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertFalse($data->metPercent50);
         $this->assertFalse($data->metPercent67);
@@ -726,8 +726,8 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.69, round($data->expectedChange, 2));
-        $this->assertEquals(28.89, round($data->value, 2));
+        $this->assertEquals(8.84, round($data->expectedChange, 2));
+        $this->assertEquals(28.04, round($data->value, 2));
         $this->assertEquals(100.00, round($data->metPercent, 2));
         $this->assertTrue($data->met);
         $this->assertTrue($data->metPercent50);
@@ -750,12 +750,12 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.05, round($data->expectedChange, 2));
-        $this->assertEquals(28.25, round($data->value, 2));
-        $this->assertEquals(66.29, round($data->metPercent, 2));
+        $this->assertEquals(8.03, round($data->expectedChange, 2));
+        $this->assertEquals(27.23, round($data->value, 2));
+        $this->assertEquals(74.72, round($data->metPercent, 2));
         $this->assertFalse($data->met);
         $this->assertTrue($data->metPercent50);
-        $this->assertFalse($data->metPercent67);
+        $this->assertTrue($data->metPercent67);
 
         $ratings = new RatingCollection;
 
@@ -766,10 +766,10 @@ class EtrTargetTest extends TestCase
 
         $data = $etrTarget->data();
 
-        $this->assertEquals(9.05, round($data->expectedChange, 2));
-        $this->assertEquals(28.25, round($data->value, 2));
-        $this->assertEquals(89.49, round($data->metPercent, 2));
-        $this->assertFalse($data->met);
+        $this->assertEquals(8.03, round($data->expectedChange, 2));
+        $this->assertEquals(27.23, round($data->value, 2));
+        $this->assertEquals(100.00, round($data->metPercent, 2));
+        $this->assertTrue($data->met);
         $this->assertTrue($data->metPercent50);
         $this->assertTrue($data->metPercent67);
     }
