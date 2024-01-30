@@ -152,7 +152,7 @@ class EtrTarget
         //  Returns the expected treatment response (etr) target value.  Uses the ST algorithm.
         //  One (1) rating score REQUIRED.
 
-        $flattenMeeting = $this->algorithm->flattenMeeting;
+        $flattenMeeting = $this->algorithm->targetFlattenMeeting;
         $centeredAt20 = $firstRatingScore - 20;
         $interceptMean = $this->algorithm->interceptMean + ($this->algorithm->intake * $centeredAt20);
         $linearMean = $this->algorithm->linearMean + ($this->algorithm->linearByIntake * $centeredAt20);
